@@ -5,7 +5,7 @@ function getMaxsum(arr){
 
     for(let i =1 ; i< arr.length ; i++){
        let take = arr[i] 
-       i > 1 && (take += prev2)
+       i > 1 && (take += prev2) // for not taking negative case (i-2)
        let notTake = 0 + prev
      let curr = Math.max(take , notTake)
      prev2 = prev

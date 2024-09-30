@@ -12,7 +12,7 @@ console.log("hey")
 //     }
 //   };
   
-//   group.showList();
+//   group.showList();  // undefined 
 
   // function doAsyncTask(cb) {
   //    setTimeout(
@@ -32,7 +32,7 @@ var f = function g(){ return 23; };
 // (function(foo){
 //     console.log( foo.bar)
 //     return typeof foo.bar;
-// })({ foo: { bar: 1 } });
+// })({ foo: { bar: 1 } }); // undefined 
 
 // function foo() {
 //     let a = b = 0;
@@ -167,19 +167,19 @@ setTimeout(()=>{console.log("F")},1000);
 // x("inner");
 // globalVar = "guess"
 // x("inner");
-   //  const carDetails = {
-   //   name: "Ford Mustang",
-   //   yearBought: 2005,
-   //   getName(){
-   //      return this.name;
-   //   },
-   //   isRegistered: true
-   // };
+  //   const carDetails = {
+  //    name: "Ford Mustang",
+  //    yearBought: 2005,
+  //    getName(){
+  //       return this.name;
+  //    },
+  //    isRegistered: true
+  //  };
 
-   // var name = "Ford Ranger";
-   // var getCarName = carDetails.getName;
+  //  var name = "Ford Ranger";
+  //  var getCarName = carDetails.getName;
 
-   // console.log(getCarName(), this); 
+  //  console.log(getCarName(), this); 
 
 
 
@@ -216,29 +216,29 @@ setTimeout(()=>{console.log("F")},1000);
  * @return void
  */
 
-// function fizzBuzz(n){
-//    let ans =[]
-//    for(let i =1 ; i<=n ; i++){
-//      if(i%3 === 0 && i%5=== 0){
-//          ans.push("fizzbuzz")
-//      }
-//      else if(i%3==0){
-//        ans.push("fizz")
-//      }
-//      else if(i%5==0){
-//          ans.push("buzz")
-//      }
-//      else{
-//          ans.push(i)
-//      }
+function fizzBuzz(n){
+   let ans =[]
+   for(let i =1 ; i<=n ; i++){
+     if(i%3 === 0 && i%5=== 0){
+         ans.push("fizzbuzz")
+     }
+     else if(i%3==0){
+       ans.push("fizz")
+     }
+     else if(i%5==0){
+         ans.push("buzz")
+     }
+     else{
+         ans.push(i)
+     }
  
-//    }
-//    return ans
-//  //   console.log(ans)
+   }
+   return ans
+ //   console.log(ans)
  
-//  }
+ }
  
- // setTimeout(() => fizzBuzz(5) , 500)
+//  setTimeout(() => fizzBuzz(5) , 500)
  
 //  function promiseFun(fun){
 //      return function(arg){
@@ -459,3 +459,56 @@ Second comment
 
 // print = console.log;
 // print("hello")
+
+
+
+// New obj with capital Keys 
+
+function getNewObj(obj){
+  let ans = {}
+
+  for(let key in obj){
+      if(typeof obj[key] === "object" && !Array.isArray(obj[key])){
+          ans[`${ typeof key === 'string'? key.toUpperCase() : key}`] = {...getNewObj(obj[key])}
+      }
+      else{
+          ans[`${ typeof key === 'string'? key.toUpperCase() : key}`] =  obj[key]
+      }
+  }
+  return ans 
+}
+const sym = Symbol('symKey');
+let c = {
+  name: "Alice",
+  address: {
+    city: "New York",
+    zip: 10001,
+  },
+  phone: "123456789",
+name: "Bob",
+hobbies: ["reading", "swimming"],
+123: "value1",
+"getName": () => {},
+//  [sym]: "symbolValue",
+name: "Alice"
+    
+}
+
+const data = getNewObj(c)
+
+console.log("Ans  ::",  data)
+
+
+// const promise = new Promise((resolve, reject) => {
+//   console.log(1);
+//   setTimeout(() => {
+//     console.log("timerStart");
+//     resolve("success");
+//     console.log("timerEnd");
+//   }, 0);
+//   console.log(2);
+// });
+// promise.then((res) => {
+//   console.log(res);
+// });
+// console.log(4);

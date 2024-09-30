@@ -49,3 +49,27 @@ function flattenObject(obj, parentKey = '') {
   const flatObject = flattenObject(nestedObject);
   
   console.log(flatObject);
+
+
+  
+  function getObj(str , val ){
+    let arr = str.split(".")
+     return recu(arr , 0 , val)
+  }
+  function recu(arr , idx , val){
+    let result = {}
+    if(idx == arr.length-1) return {[arr[arr.length-1]] : val}
+  
+    result[arr[idx]] = recu(arr, idx+1 , val)
+  
+    return result 
+  }
+  
+  console.log(getObj("a.b.c" , 2))  // 
+  let ans = {
+    a : {
+      b : {
+        c : "2"
+      }
+    }
+  }

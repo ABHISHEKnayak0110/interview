@@ -41,6 +41,7 @@ function spaceFab(n){
     last = ans 
     prev = last
 }
+
 return ans 
 }
 console.log(spaceFab(3))
